@@ -7,6 +7,12 @@ class Edge:
         self.weight = -math.log(rate)  # Convert rate to log-weight
 
 def bellman_ford(vertices, edges, source):
+    """
+    This is the main function where Bellman-Ford is implemented to find arbitrage opportunities given the list of vertices, the list of edges and the source.
+    This functions first iterates over each node in the graph |V|-1 times to update their shortest distance from the origin and detect if any of the shortest distance would still change after |V|-1 iterations. 
+    It records the predecessor each time a shortest distance is updated, so it can reconstruct the negative cycle once it finds one.
+    This function outputs the list of arbitrage opportunities and the cycle corresponding to the best arbitrage opportunity, if there is any.
+    """
     distance = {v: float('inf') for v in vertices}
     predecessor = {v: None for v in vertices}
     distance[source] = 0
