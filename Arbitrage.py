@@ -66,7 +66,7 @@ def bellman_ford(vertices, edges, source):
 
 # Example usage
 currencies = ['Currency_A','Currency_B', 'Currency_C', 'Currency_D']
-exchange_rates = {
+exchange_rates_test1 = {
     ('Currency_A', 'Currency_B'): 1.34,
     ('Currency_A', 'Currency_C'): 1.98,
     ('Currency_A', 'Currency_D'): 0.64,
@@ -80,8 +80,22 @@ exchange_rates = {
     ('Currency_D', 'Currency_B'): 1.95,
     ('Currency_D', 'Currency_C'): 3.1
 }
+exchange_rates_test2 = {
+    ('Currency_A', 'Currency_B'): 2.0,
+    ('Currency_B', 'Currency_C'): 2.0,
+    ('Currency_C', 'Currency_A'): 0.25,
+    ('Currency_A', 'Currency_C'): 4.0,
+    ('Currency_C', 'Currency_B'): 0.5,
+    ('Currency_B', 'Currency_A'): 0.5, 
+    ('Currency_A', 'Currency_D'): 1.5,
+    ('Currency_D', 'Currency_B'): 1.333, 
+    ('Currency_D', 'Currency_C'): 2.666,
+    ('Currency_C', 'Currency_D'): 0.375,  
+    ('Currency_B', 'Currency_D'): 0.75,  
+    ('Currency_D', 'Currency_A'): 0.666   
+}
 
-edges = [Edge(src, tgt, rate) for (src, tgt), rate in exchange_rates.items()]
+edges = [Edge(src, tgt, rate) for (src, tgt), rate in exchange_rates_test1.items()]
 best_arbitrage_cycle = bellman_ford(currencies, edges, 'Currency_A')
 
 if best_arbitrage_cycle:
